@@ -14,7 +14,23 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks"]
     chef.add_recipe 'apt'
-    chef.add_recipe 'rvm'
+
+    chef.add_recipe "rvm::vagrant"
+    chef.add_recipe "rvm::system"
+    chef.json = {
+      'rvm' => {
+        'rubies' => ['1.9.3'],
+        'default_ruby' => '1.9.3',
+        'vagrant' => {
+          'system_chef_solo' => '/opt/vagrant_ruby/bin/chef-solo'
+        },
+        'gems' => {
+          '1.9.3' => [
+                      { 'name'   => 'rails' }
+                     ]
+        }
+      },
+    }
   end
 
   config.vm.share_folder "v-root", "/vagrant", ".", :nfs => true
