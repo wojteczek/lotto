@@ -2,7 +2,10 @@ SITE
   remote: http://community.opscode.com/api/v1
   specs:
     apt (1.5.0)
+    build-essential (1.2.0)
     chef-client (2.0.2)
+    nodejs (1.0.1)
+      build-essential (>= 0.0.0)
 
 GIT
   remote: https://github.com/fnichol/chef-rvm
@@ -14,5 +17,6 @@ GIT
 DEPENDENCIES
   apt (>= 0)
   chef-client (>= 0)
+  nodejs (>= 0)
   rvm (>= 0)
 
