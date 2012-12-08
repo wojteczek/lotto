@@ -5,4 +5,6 @@ describe 'Interface' do
     visit '/'
     page.should have_content('Sign in')
   end
+  it 'should show logout link for logged in users'
+  it 'should show email of signed in user'
 end
