@@ -12,7 +12,21 @@ describe 'Numbers' do
     page.should have_content("Your lucky numbers are:")
   end
 
-  it 'should show 6 numbers'
-  it 'should show numbers from range 1 to 49'
-  it 'should show unique numbers'
+  def collect_numbers
+    (1..6).map { |x| find(:id, "number#{x}").text.to_i }
+  end
+
+  it 'should show 6 numbers from range 1 to 49' do
+    numbers = collect_numbers
+
+    numbers.each do |x|
+      x.should be <= 49
+      x.should be >= 1
+    end
+  end
+
+  it 'should show unique numbers' do
+    numbers = collect_numbers
+    numbers.uniq.length.should == 6
+  end
 end
