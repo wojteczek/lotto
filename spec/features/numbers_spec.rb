@@ -1,15 +1,11 @@
 require 'spec_helper'
+require 'interface_helper'
 
 describe 'Numbers' do
+  include InterfaceHelper
+
   before :each do
-    visit '/users/sign_up'
-
-    fill_in 'user[email]', :with => 'user@example.com'
-    fill_in 'user[password]', :with => 'password'
-    fill_in 'user[password_confirmation]', :with => 'password'
-    click_button 'Sign up'
-
-    visit '/'
+    sign_up_as_example_user
   end
 
   it 'should show 6 number' do
