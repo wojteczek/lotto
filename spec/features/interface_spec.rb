@@ -10,7 +10,7 @@ describe 'Interface' do
   end
   it 'should show logout link for logged in users' do
     sign_up_as_example_user
-    page.should have_content('Log out')
+    page.should have_link('Log out')
   end
   it 'should show email of signed in user'
 end
